@@ -14,7 +14,7 @@ public abstract class CommandGet<T extends BaseEntity> extends CommandHandler {
     @Override
     protected void apply(String[] command) {
         try {
-            messageSender.send("Get entity: " + command[2]);
+            messageSender.send("Get " + getProcessedCommands()[1] + " "  + command[2]);
             messageSender.send(execute(command));
         } catch (HttpException e) {
             if (e.getHttpCode() == 404) messageSender.send("No such entity((");

@@ -25,7 +25,6 @@ public interface RetrofitOrder {
     @Headers({"Content-Type: application/json"})
     Call<ApiResponse> deleteById(@Path("orderId") Long id);
     
-    
     @GET("store/inventory")
     @Headers({"ContentType-Type: application/json"})
     Call<Map<String, Integer>> getInventory();

@@ -4,6 +4,7 @@ import ua.goit.controller.Controller;
 import ua.goit.controller.MessageSender;
 import lombok.AccessLevel;
 import lombok.Getter;
+import ua.goit.model.ApiResponse;
 import ua.goit.model.Order;
 import ua.goit.service.retrofit.RetrofitOrder;
 import ua.goit.util.Retrofit;
@@ -20,7 +21,9 @@ public class HandlerStoreDelete extends CommandDelete<Order> {
     }
 
     @Override
-    protected void execute(String... command) {
-        Retrofit.execute(retrofit.deleteById(Long.valueOf(command[2])));
+    protected String execute(String... command) {
+        ApiResponse apiResponse = Retrofit.execute(retrofit.deleteById(Long.valueOf(command[2])));
+        messageSender.send("Deleted order:");
+        return apiResponse.getMessage();
     }
 }

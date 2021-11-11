@@ -36,7 +36,6 @@ public interface RetrofitPet {
     @Headers({"Content-Type: application/json"})
     Call<ApiResponse> deleteById(@Path("petId") Long id);
     
-    
     @FormUrlEncoded
     @POST("pet/{petId}")
     @Headers({"Content-Type: application/json"})

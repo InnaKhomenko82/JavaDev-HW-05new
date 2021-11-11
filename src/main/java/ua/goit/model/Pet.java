@@ -35,5 +35,4 @@ public class Pet implements BaseEntity<Long> {
         this.status = PetStatus.valueOf(parameters[2]);
         this.category = new Category(0L, parameters[3]);
     }
-
 }

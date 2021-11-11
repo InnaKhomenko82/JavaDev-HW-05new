@@ -22,7 +22,8 @@ public class HandlerStorePost extends CommandHandler {
     @Override
     protected void apply(String[] command) {
         messageSender.send("Insert order details:", "id|petID|quantity|shipDate|status|complete");
-        Order order = Retrofit.execute(retrofit.create(new Order(controller.read())));
+        Order order = new Order(controller.read());
+        Retrofit.execute(retrofit.create(order));
         messageSender.send("Created new order:", order);
     }
     

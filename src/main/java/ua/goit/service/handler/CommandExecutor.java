@@ -48,7 +48,5 @@ public class CommandExecutor {
             }
         }
         return commandHandlers;
-
     }
-
 }

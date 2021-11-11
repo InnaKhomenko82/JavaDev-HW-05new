@@ -22,7 +22,8 @@ public class HandlerPetPost extends CommandHandler {
     @Override
     protected void apply(String[] command) {
         messageSender.send("Insert pet details:", "id|name|status|category");
-        Pet pet = Retrofit.execute(retrofit.create(new Pet(controller.read())));
+        Pet pet = new Pet(controller.read());
+        Retrofit.execute(retrofit.create(pet));
         messageSender.send("Created new order:", pet);
     }
 

@@ -21,7 +21,9 @@ public class HandlerUserDelete extends CommandDelete<User> {
     }
 
     @Override
-    protected void execute(String... command) {
-       Retrofit.execute(retrofit.deleteByName(command[2]));
+    protected String execute(String... command) {
+        ApiResponse apiResponse = Retrofit.execute(retrofit.deleteByName(command[2]));
+        messageSender.send("Deleted user:");
+        return apiResponse.getMessage();
     }
 }

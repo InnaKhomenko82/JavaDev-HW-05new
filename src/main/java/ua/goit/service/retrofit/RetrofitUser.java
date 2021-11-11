@@ -43,8 +43,7 @@ public interface RetrofitUser {
     @Headers({"ContentType-Type: application/json"})
     Call<ApiResponse> createWithList(@Body List<User> users);
 
-//    @POST("user/createWithArray")
-//    @Headers({"ContentType-Type: application/json"})
-//    Call<ApiResponse> createWithArray(@Body User[] users);
-
+    @POST("user/createWithArray")
+    @Headers({"ContentType-Type: application/json"})
+    Call<ApiResponse> createWithArray(@Body User[] users);
 }

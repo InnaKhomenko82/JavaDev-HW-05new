@@ -1,5 +1,6 @@
 package ua.goit.service.handler;
 
+import retrofit2.Call;
 import ua.goit.controller.Controller;
 import ua.goit.controller.MessageSender;
 import lombok.AccessLevel;
@@ -22,7 +23,8 @@ public class HandlerUserPost extends CommandHandler {
     @Override
     protected void apply(String[] command) {
         messageSender.send("Insert user details:", "id|userName|firstName|lastName|email|password|phone|userStatus");
-        User user = Retrofit.execute(retrofit.create(new User(controller.read())));
+        User user = new User(controller.read());
+        Retrofit.execute(retrofit.create(user));
         messageSender.send("Created new user:" + user);
     }
     

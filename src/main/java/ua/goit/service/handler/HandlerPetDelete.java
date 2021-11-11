@@ -21,7 +21,9 @@ public class HandlerPetDelete extends CommandDelete<Pet> {
     }
 
     @Override
-    protected void execute(String... command) {
-        Retrofit.execute(retrofit.deleteById(Long.valueOf(command[2])));
+    protected String execute(String... command) {
+        ApiResponse apiResponse = Retrofit.execute(retrofit.deleteById(Long.valueOf(command[2])));
+        messageSender.send("Deleted pet:");
+        return apiResponse.getMessage();
     }
 }

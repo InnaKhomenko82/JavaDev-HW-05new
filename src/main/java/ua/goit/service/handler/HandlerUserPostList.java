@@ -10,7 +10,7 @@ public class HandlerUserPostList extends CommandHandler {
     @Getter(AccessLevel.PROTECTED)
     private final String[] processedCommands = {"post", "user", "createWithList"};
     
-    private final CommandHandler handler = new HandlerUserPut(messageSender, controller);
+    private final CommandHandler handler = new HandlerUserPost(messageSender, controller);
 
     protected HandlerUserPostList(MessageSender messageSender, Controller controller) {
         super(messageSender, controller);
@@ -19,7 +19,7 @@ public class HandlerUserPostList extends CommandHandler {
     @Override
     protected void apply(String[] command) {
         while (true) {           
-            handler.apply("put", "user");
+            handler.apply("post", "user");
             messageSender.send("Enter any symbol to continue or 'N' to close the list");
             if ("N".equalsIgnoreCase(controller.read()[0])) break;
         }

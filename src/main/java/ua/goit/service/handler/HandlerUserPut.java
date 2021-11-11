@@ -21,10 +21,10 @@ public class HandlerUserPut extends CommandHandler {
     
     @Override
     protected void apply(String[] command) {
-        messageSender.send("Insert user details:\n", "id|userName|firstName|lastName|email|password|phone|userStatus");
+        messageSender.send("Insert user details:", "id|userName|firstName|lastName|email|password|phone|userStatus");
         User user = new User(controller.read());
-        User result = Retrofit.execute(retrofit.updateByName(user, user.getUserName()));
-        messageSender.send("Updated new user:", result);
+        Retrofit.execute(retrofit.updateByName(user, user.getUserName()));
+        messageSender.send("Updated user:", user);
     }
     
 }
