@@ -25,5 +25,15 @@ public class HandlerUserGetLogout extends CommandHandler {
         ApiResponse result = Retrofit.execute(retrofit.logout());
         messageSender.send(result.getMessage());
     }
-    
+
+    @Override
+    protected String commandDescription() {
+        return "Log out current logged in user session";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "get|user|logout\n";
+    }
+
 }

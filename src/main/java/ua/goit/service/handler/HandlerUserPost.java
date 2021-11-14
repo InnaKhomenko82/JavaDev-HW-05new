@@ -27,5 +27,19 @@ public class HandlerUserPost extends CommandHandler {
         Retrofit.execute(retrofit.create(user));
         messageSender.send("Created new user:" + user);
     }
-    
+
+    @Override
+    protected String commandDescription() {
+        return "Create User";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "post|user\n" +
+                "~id|userName|firstName|lastName|email|password|phone|userStatus~\n" +
+                "51658|newUser|Inna|Khomenko|inna@gmail.com|1234|987654|8\n" +
+                "25419|newUser2|Inna|Khomenko|inna@gmail.com|1234|987654|8\n" +
+                "85210|newUser3|Inna|Khomenko|inna@gmail.com|1234|987654|8\n";
+    }
+
 }

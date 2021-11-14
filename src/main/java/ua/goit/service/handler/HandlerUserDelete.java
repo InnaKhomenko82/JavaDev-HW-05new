@@ -26,4 +26,15 @@ public class HandlerUserDelete extends CommandDelete<User> {
         messageSender.send("Deleted user:");
         return apiResponse.getMessage();
     }
+
+    @Override
+    protected String commandDescription() {
+        return "Delete User";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "~delete|user|userName~\n" +
+                "delete|user|newUser\n";
+    }
 }

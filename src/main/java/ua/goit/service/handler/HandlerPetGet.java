@@ -24,4 +24,14 @@ public class HandlerPetGet extends CommandGet<Pet> {
         return Retrofit.execute(retrofit.findById(Long.valueOf(command[2])));
     }
 
+    @Override
+    protected String commandDescription() {
+        return "Find Pet by ID";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "~get|pet|petID~\n" +
+                "get|pet|2\n";
+    }
 }

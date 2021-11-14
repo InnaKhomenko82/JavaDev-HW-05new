@@ -19,5 +19,15 @@ public class HandlerExit extends CommandHandler {
         messageSender.send("Have a nice day)))");
         System.exit(0);
     }
-    
+
+    @Override
+    protected String commandDescription() {
+        return "Stop the application";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "exit\n";
+    }
+
 }

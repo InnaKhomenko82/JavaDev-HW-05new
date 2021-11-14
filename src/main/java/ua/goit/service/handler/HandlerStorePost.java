@@ -26,5 +26,18 @@ public class HandlerStorePost extends CommandHandler {
         Retrofit.execute(retrofit.create(order));
         messageSender.send("Created new order:", order);
     }
-    
+
+    @Override
+    protected String commandDescription() {
+        return "Place an order for a Pet";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "post|order" +
+                "\n~id|petID|quantity|shipDate|status|complete~" +
+                "\n2|1|30|2021-09-09|PLACED|true\n" +
+                "5|3|25|2021-03-11|APPROVED|true\n";
+    }
+
 }

@@ -27,6 +27,17 @@ public class HandlerUserGetLogin extends CommandHandler {
     }
 
     @Override
+    protected String commandDescription() {
+        return "Log User into the system";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "~get|user|login|userName|password~\n" +
+                "get|user|login|user1|1234\n";
+    }
+
+    @Override
     protected int getNumberCommands() {
         return 5;
     }

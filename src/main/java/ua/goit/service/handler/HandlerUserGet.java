@@ -23,5 +23,17 @@ public class HandlerUserGet extends CommandGet<User> {
     protected User execute(String[] command) {
         return Retrofit.execute(retrofit.getUserByName(command[2]));
     }
-    
+
+    @Override
+    protected String commandDescription() {
+        return "Get user by User name";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "~get|user|userName~\n" +
+                "get|user|newUser\n" +
+                "get|user|newUser2\n" +
+                "get|user|newUser3\n";
+    }
 }

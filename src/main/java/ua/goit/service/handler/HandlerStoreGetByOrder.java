@@ -23,5 +23,15 @@ public class HandlerStoreGetByOrder extends CommandGet<Order> {
     protected Order execute(String[] command) {
         return Retrofit.execute(retrofit.findById(Long.valueOf(command[2])));
     }
-    
+
+    @Override
+    protected String commandDescription() {
+        return "Find purchase order by ID";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "~get|order|orderID~\n" +
+                "get|order|2\n";
+    }
 }

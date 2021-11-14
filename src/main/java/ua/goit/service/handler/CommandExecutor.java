@@ -5,19 +5,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+
 import lombok.SneakyThrows;
 import org.reflections.Reflections;
 import ua.goit.controller.Controller;
 import ua.goit.controller.MessageSender;
 
+
 public class CommandExecutor {
 
-    private final List<CommandHandler> handlers;
+    private static List<CommandHandler> handlers;
 
     public CommandExecutor(MessageSender messageSender, Controller controller) {
         this.handlers = createCommandHandler(messageSender, controller);
     }
-    
+
     public final void handle(String[] command) {
         handlers.stream()
                 .filter(handler -> isApplicable(handler, command)).findAny()
@@ -36,7 +38,7 @@ public class CommandExecutor {
     }
 
     @SneakyThrows
-    private List<CommandHandler> createCommandHandler(MessageSender messageSender, Controller controller) {
+    static List<CommandHandler> createCommandHandler(MessageSender messageSender, Controller controller) {
         Reflections reflections = new Reflections("ua.goit");
         Set<Class<? extends CommandHandler>> classes = reflections.getSubTypesOf(CommandHandler.class);
         List<CommandHandler> commandHandlers = new ArrayList<>(classes.size());
@@ -48,5 +50,9 @@ public class CommandExecutor {
             }
         }
         return commandHandlers;
+    }
+
+    public static List<CommandHandler> getHandlers() {
+        return handlers;
     }
 }

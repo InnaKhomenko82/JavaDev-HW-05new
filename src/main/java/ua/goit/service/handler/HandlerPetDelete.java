@@ -26,4 +26,15 @@ public class HandlerPetDelete extends CommandDelete<Pet> {
         messageSender.send("Deleted pet:");
         return apiResponse.getMessage();
     }
+
+    @Override
+    protected String commandDescription() {
+        return "Delete a Pet";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "~delete|pet|petID~\n" +
+                "delete|pet|2\n";
+    }
 }

@@ -27,4 +27,16 @@ public class HandlerPetGetByStatus extends CommandGet<Pet> {
         return Retrofit.execute(retrofit.getByStatus(command[3].toLowerCase())).get(0);
     }
 
+    @Override
+    protected String commandDescription() {
+        return "Find Pets by status";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "~get|pet|findByStatus|status~\n" +
+                "get|pet|findByStatus|available\n" +
+                "get|pet|findByStatus|pending\n" +
+                "get|pet|findByStatus|sold\n";
+    }
 }

@@ -18,5 +18,15 @@ public class HandlerStoreGetInventory extends CommandHandler {
     protected void apply(String[] command) {
         throw new RuntimeException("Not implemented yet");
     }
-    
+
+    @Override
+    protected String commandDescription() {
+        return "Return Pet inventories by status";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "\n";
+    }
+
 }

@@ -26,5 +26,17 @@ public class HandlerUserPut extends CommandHandler {
         Retrofit.execute(retrofit.updateByName(user, user.getUserName()));
         messageSender.send("Updated user:", user);
     }
-    
+
+    @Override
+    protected String commandDescription() {
+        return "Update User";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "put|user\n" +
+                "~id|userName|firstName|lastName|email|password|phone|userStatus~\n" +
+                "51658|newUser|Inna|Khomenko|inna@gmail.com|1234|987654|8\n";
+    }
+
 }

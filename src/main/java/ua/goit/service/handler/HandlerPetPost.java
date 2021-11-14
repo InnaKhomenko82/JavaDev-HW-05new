@@ -27,4 +27,17 @@ public class HandlerPetPost extends CommandHandler {
         messageSender.send("Created new order:", pet);
     }
 
+    @Override
+    protected String commandDescription() {
+        return "Add a new Pet to the store";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "post|pet\n" +
+                "~id|name|status|category~\n" +
+                "85262|Kleo|AVAILABLE|cats\n" +
+                "25465|Ruf|AVAILABLE|ant\n";
+    }
+
 }

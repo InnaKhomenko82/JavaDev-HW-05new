@@ -16,6 +16,10 @@ public abstract class CommandHandler {
 
     protected abstract String[] getProcessedCommands();
 
+    protected abstract String commandDescription();
+
+    protected abstract String commandExample();
+
     //default implementation
     protected int getNumberCommands() {
         return getProcessedCommands().length;

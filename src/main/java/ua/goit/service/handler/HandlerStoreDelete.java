@@ -26,4 +26,15 @@ public class HandlerStoreDelete extends CommandDelete<Order> {
         messageSender.send("Deleted order:");
         return apiResponse.getMessage();
     }
+
+    @Override
+    protected String commandDescription() {
+        return "Delete purchase order by ID";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "~delete|order|orderID~\n" +
+                "delete|order|2\n";
+    }
 }

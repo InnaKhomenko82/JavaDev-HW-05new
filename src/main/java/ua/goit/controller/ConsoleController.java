@@ -29,6 +29,12 @@ public class ConsoleController implements Controller, MessageSender {
     }
 
     @Override
+    public String[] readArray() {
+        String users = scanner.next();
+        return users.split(";");
+    }
+
+    @Override
     public void send(Object... message) {
         Arrays.stream(message).forEach(System.out::println);
     }

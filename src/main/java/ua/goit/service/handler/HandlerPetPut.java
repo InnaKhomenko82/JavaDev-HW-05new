@@ -27,4 +27,16 @@ public class HandlerPetPut extends CommandHandler {
         messageSender.send("Updated pet:", pet);
     }
 
+    @Override
+    protected String commandDescription() {
+        return "Update an existing Pet";
+    }
+
+    @Override
+    protected String commandExample() {
+        return "put|pet\n" +
+                "~id|name|status|category~\n" +
+                "85262|Kleo2|AVAILABLE|cats\n";
+    }
+
 }
