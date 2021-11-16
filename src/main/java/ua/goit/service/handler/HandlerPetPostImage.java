@@ -1,12 +1,16 @@
 package ua.goit.service.handler;
 
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import ua.goit.controller.Controller;
 import ua.goit.controller.MessageSender;
 import lombok.AccessLevel;
 import lombok.Getter;
 import ua.goit.service.retrofit.RetrofitPet;
 import ua.goit.util.Retrofit;
+
+import java.io.File;
 
 public class HandlerPetPostImage extends CommandHandler {
 
@@ -21,9 +25,13 @@ public class HandlerPetPostImage extends CommandHandler {
 
     @Override
     protected void apply(String[] command) {
-        System.out.println("image");
-        MultipartBody.Part formData = MultipartBody.Part.createFormData(command[4], command[5]);
-        Retrofit.execute(retrofit.uploadImage(Long.valueOf(command[3]), formData,formData));
+        File fileName = new File(command[5]);
+        MultipartBody.Part additionalMetadata = MultipartBody.Part.createFormData("additionalMetadata", command[4]);
+        MultipartBody.Part file = MultipartBody.Part
+                .createFormData("file", fileName.getName(),
+                        RequestBody.create(MediaType.parse("images/*"), fileName));
+        messageSender.send(Retrofit.execute(retrofit.uploadImage(Long.valueOf(command[3]),
+                additionalMetadata, file)).getMessage());
     }
 
     @Override
@@ -33,13 +41,13 @@ public class HandlerPetPostImage extends CommandHandler {
 
     @Override
     protected String commandExample() {
-        return "post|pet|image|petID|image|\n" +
-                "post|pet|image|85262|https://i.redd.it/z1gnwuqqyrw71.jpg";
+        return "~post|pet|image|petID|additionalMetadata|file~\n" +
+                "post|pet|image|85262|MyCatPhoto|008.jpg\n";
     }
 
     @Override
     protected int getNumberCommands() {
-        return 5;
+        return 6;
     }
     
 }

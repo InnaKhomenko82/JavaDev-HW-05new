@@ -39,16 +39,19 @@ public interface RetrofitPet {
     @FormUrlEncoded
     @POST("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<ApiResponse> updateById(@Path("petId") Long id, @Field("name") String name, @Field("status") String status);
+    Call<ApiResponse> updateById(@Path("petId") Long id,
+            @Field("name") String name,
+            @Field("status") String status);
         
     @Multipart
     @POST("pet/{petId}/uploadImage")
-    @Headers({"ContentType-Type: application/json"})
-    Call<ApiResponse> uploadImage(@Path("petId") Long id, @Part MultipartBody.Part filePart,
-            @Part MultipartBody.Part additionalMetadata);
+    @Headers({"ContentType-Type: multipart/form-data"})
+    Call<ApiResponse> uploadImage(@Path("petId") Long id,
+            @Part MultipartBody.Part additionalMetadata,
+            @Part MultipartBody.Part filePart);
 
     @GET("pet/findByStatus")
     @Headers({"Content-Type: application/json"})
-    Call<List<Pet>> getByStatus(@Query("status") String ... status);
+    Call<List<Pet>> getByStatus(@Query("status") String status);
     
 }

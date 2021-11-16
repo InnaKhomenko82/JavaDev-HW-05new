@@ -35,6 +35,6 @@ public class HandlerPetDelete extends CommandDelete<Pet> {
     @Override
     protected String commandExample() {
         return "~delete|pet|petID~\n" +
-                "delete|pet|2\n";
+                "delete|pet|85262\n";
     }
 }

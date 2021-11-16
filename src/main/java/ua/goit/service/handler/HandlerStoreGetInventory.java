@@ -4,11 +4,17 @@ import ua.goit.controller.Controller;
 import ua.goit.controller.MessageSender;
 import lombok.AccessLevel;
 import lombok.Getter;
+import ua.goit.service.retrofit.RetrofitOrder;
+import ua.goit.util.Retrofit;
+
+import java.util.Map;
 
 public class HandlerStoreGetInventory extends CommandHandler {
 
     @Getter(AccessLevel.PROTECTED)
-    private final String[] processedCommands = {};
+    private final String[] processedCommands = {"get", "store", "inventory"};
+
+    private final RetrofitOrder retrofit = Retrofit.createClient(RetrofitOrder.class);
 
     protected HandlerStoreGetInventory(MessageSender messageSender, Controller controller) {
         super(messageSender, controller);
@@ -16,7 +22,8 @@ public class HandlerStoreGetInventory extends CommandHandler {
     
     @Override
     protected void apply(String[] command) {
-        throw new RuntimeException("Not implemented yet");
+        Map<String, Integer> map = Retrofit.execute(retrofit.getInventory());
+        messageSender.send(map);
     }
 
     @Override
@@ -26,7 +33,7 @@ public class HandlerStoreGetInventory extends CommandHandler {
 
     @Override
     protected String commandExample() {
-        return "\n";
+        return "get|store|inventory\n";
     }
 
 }

@@ -22,8 +22,7 @@ public class HandlerUserGetLogout extends CommandHandler {
     @Override
     protected void apply(String[] command) {
         messageSender.send("Get user logout:");
-        ApiResponse result = Retrofit.execute(retrofit.logout());
-        messageSender.send(result.getMessage());
+        messageSender.send(Retrofit.execute(retrofit.logout()).getMessage());
     }
 
     @Override

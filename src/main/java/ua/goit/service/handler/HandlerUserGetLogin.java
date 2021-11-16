@@ -22,8 +22,7 @@ public class HandlerUserGetLogin extends CommandHandler {
     @Override
     protected void apply(String[] command) {
         messageSender.send("Get user login: ", command[3]);
-        ApiResponse result = Retrofit.execute(retrofit.login(command[3], command[4]));
-        messageSender.send(result.getMessage());
+        messageSender.send(Retrofit.execute(retrofit.login(command[3], command[4])).getMessage());
     }
 
     @Override
