@@ -11,7 +11,7 @@ import ua.goit.util.Retrofit;
 
 import java.util.List;
 
-public class HandlerPetGetByStatus extends CommandGet<Pet> {
+public class HandlerPetGetByStatus extends CommandHandler {
 
     @Getter(AccessLevel.PROTECTED)
     private final String[] processedCommands = {"get", "pet", "findByStatus"};
@@ -25,14 +25,13 @@ public class HandlerPetGetByStatus extends CommandGet<Pet> {
     @Override
     protected void apply(String[] command) {
         messageSender.send("Get " + getProcessedCommands()[1] + " "  + command[2] + " "  + command[3]);
-        execute(command);
+        List<Pet> executeList = Retrofit.execute(retrofit.getByStatus(command[3].toLowerCase()));
+        messageSender.send(executeList);
     }
 
     @Override
-    protected Pet execute(String[] command) {
-        List<Pet> executeList = Retrofit.execute(retrofit.getByStatus(command[3].toLowerCase()));
-        messageSender.send(executeList);
-        return Retrofit.execute(retrofit.getByStatus(command[3].toLowerCase())).get(0);
+    protected int getNumberCommands() {
+        return super.getNumberCommands() + 1;
     }
 
     @Override

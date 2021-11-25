@@ -36,6 +36,7 @@ public class HandlerUserGetLogin extends CommandHandler {
                 "get|user|login|user1|1234\n";
     }
 
+
     @Override
     protected int getNumberCommands() {
         return 5;

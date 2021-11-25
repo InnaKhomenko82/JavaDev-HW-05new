@@ -20,6 +20,10 @@ public abstract class CommandHandler {
 
     protected abstract String commandExample();
 
+    protected String section(){
+        return getProcessedCommands()[1];
+    };
+
     //default implementation
     protected int getNumberCommands() {
         return getProcessedCommands().length;

@@ -30,4 +30,9 @@ public class HandlerExit extends CommandHandler {
         return "exit\n";
     }
 
+    @Override
+    protected String section() {
+        return "z";
+    }
+
 }
